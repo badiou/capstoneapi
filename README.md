@@ -319,7 +319,7 @@ For example if you domain is `fsndtogo.eu.auth0.com` you may have on your `auth.
     3. Do not change the value of the algorithm. Leave it on RS256
 8. Get API_AUDIENCE et remplace it in your auth.py file `API_AUDIENCE = 'capstone'`
 
-### Your can use my own token i set on the config.py file.
+### Your can see the example of token i set on the config.py file.
 
 ### Existing roles
 

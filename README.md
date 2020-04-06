@@ -175,7 +175,8 @@ The API will return four error types when requests fail:
 
         ###  DELETE/movies(movie_id)
             GENERAL: Delete the movie  of the given ID if it exists. Return the id of the deleted movie, 
-            success value, total of movies and movies list based on current page number. Results are paginated in groups of 10.
+            success value, total of movies and movies list based on current page number. Results are
+             paginated in groups of 10.
 
             Sample: curl - X DELETE https://capstoneapi.herokuapp.com/movies/5
 

@@ -76,110 +76,110 @@ The API will return four error types when requests fail:
     GENERAL: 
         This endpoints returns a list of movies object, success value, total number of the movies. 
 
-    Sample: curl https://capstoneapi.herokuapp.com/movies
+            Sample: curl https://capstoneapi.herokuapp.com/movies
 
-    {
-        "movies": [
             {
-                "id": 1,
-                "release_date": "Fri, 09 Mar 2001 00:00:00 GMT",
-                "title": "Thomas NGIJOL"
-            },
-            {
-                "id": 3,
-                "release_date": "Wed, 02 Dec 2020 00:00:00 GMT",
-                "title": "Casanova"
+                "movies": [
+                    {
+                        "id": 1,
+                        "release_date": "Fri, 09 Mar 2001 00:00:00 GMT",
+                        "title": "Thomas NGIJOL"
+                    },
+                    {
+                        "id": 3,
+                        "release_date": "Wed, 02 Dec 2020 00:00:00 GMT",
+                        "title": "Casanova"
+                    }
+                ],
+                "success": true,
+                "total_movies": 2
             }
-        ],
-        "success": true,
-        "total_movies": 2
-    }
 
 ###  GET/movies(movie_id)
     GENERAL: This endpoint allows you to get for a particular Movie using its id. This endpoint
      returns one movie, and the status_code
-    Sample: curl https://capstoneapi.herokuapp.com/movies/1
+            Sample: curl https://capstoneapi.herokuapp.com/movies/1
 
-    {
-        "movie": [
             {
-                "id": 1,
-                "release_date": "Fri, 09 Mar 2001 00:00:00 GMT",
-                "title": "Thomas NGIJOL"
+                "movie": [
+                    {
+                        "id": 1,
+                        "release_date": "Fri, 09 Mar 2001 00:00:00 GMT",
+                        "title": "Thomas NGIJOL"
+                    }
+                ],
+                "success": true
             }
-        ],
-        "success": true
-    }
 
 ###  GET/actors
     GENERAL: 
         This endpoints returns a list of actors object, success value, total number of the actors. 
 
-    Sample: curl https://capstoneapi.herokuapp.com/actors
+            Sample: curl https://capstoneapi.herokuapp.com/actors
 
-    {
-        "actors": [
             {
-                "age": 32,
-                "gender": "M",
-                "id": 1,
-                "name": "Badiou OURO"
-            },
-            {
-                "age": 45,
-                "gender": "M",
-                "id": 5,
-                "name": "Jamel Debouzze"
+                "actors": [
+                    {
+                        "age": 32,
+                        "gender": "M",
+                        "id": 1,
+                        "name": "Badiou OURO"
+                    },
+                    {
+                        "age": 45,
+                        "gender": "M",
+                        "id": 5,
+                        "name": "Jamel Debouzze"
+                    }
+                ],
+                "success": true
             }
-        ],
-        "success": true
-    }
 
 ###  GET/actors(actor_id)
     GENERAL: This endpoint allows you to get for a particular actor using its id. This endpoint 
     returns one actor, and the status_code
-    Sample: curl https://capstoneapi.herokuapp.com/actors/1
+            Sample: curl https://capstoneapi.herokuapp.com/actors/1
 
-    {
-        "actor": [
             {
-                "age": 32,
-                "gender": "M",
-                "id": 1,
-                "name": "Badiou OURO"
+                "actor": [
+                    {
+                        "age": 32,
+                        "gender": "M",
+                        "id": 1,
+                        "name": "Badiou OURO"
+                    }
+                ],
+                "success": true
             }
-        ],
-        "success": true
-    }
 
 
 ###  DELETE/actors(actor_id)
     GENERAL: Delete the actor  of the given ID if it exists. Return the id of the deleted actor, 
     success value, total of actors and actor list based on current page number. Results are paginated in groups of 10.
 
-    Sample: curl - X DELETE https://capstoneapi.herokuapp.com/actors/5
-    {
-        "actors": [
+            Sample: curl - X DELETE https://capstoneapi.herokuapp.com/actors/5
             {
-                "age": 32,
-                "gender": "M",
-                "id": 1,
-                "name": "Badiou OURO"
+                "actors": [
+                    {
+                        "age": 32,
+                        "gender": "M",
+                        "id": 1,
+                        "name": "Badiou OURO"
+                    }
+                ],
+                "deleted": 5,
+                "success": true,
+                "total_actors": 1
             }
-        ],
-        "deleted": 5,
-        "success": true,
-        "total_actors": 1
-    }
 
 
-###  DELETE/movies(movie_id)
-    GENERAL: Delete the movie  of the given ID if it exists. Return the id of the deleted movie, 
-    success value, total of movies and movies list based on current page number. Results are paginated in groups of 10.
+        ###  DELETE/movies(movie_id)
+            GENERAL: Delete the movie  of the given ID if it exists. Return the id of the deleted movie, 
+            success value, total of movies and movies list based on current page number. Results are paginated in groups of 10.
 
-    Sample: curl - X DELETE https://capstoneapi.herokuapp.com/movies/5
+            Sample: curl - X DELETE https://capstoneapi.herokuapp.com/movies/5
 
-    {
+            {
         "actors": [
             {
                 "id": 1,
@@ -197,26 +197,26 @@ The API will return four error types when requests fail:
     GENERAL: This endpoint is used to create a new movie. We return the ID of the new movie created, 
     the movie that was created, the list of movies and the number of movies.
 
-    Sample: curl -X POST https://capstoneapi.herokuapp.com/movies 
-    -H "Content-Type:application/json" -d "{"title":"Casanova","release_date":"2020-12-02"}"
+            Sample: curl -X POST https://capstoneapi.herokuapp.com/movies 
+            -H "Content-Type:application/json" -d "{"title":"Casanova","release_date":"2020-12-02"}"
 
-   {    
-    "movies": [
-        {
-            "id": 1,
-            "release_date": "Fri, 09 Mar 2001 00:00:00 GMT",
-            "title": "Thomas NGIJOL"
-        },
-        {
-            "id": 4,
-            "release_date": "Wed, 02 Dec 2020 00:00:00 GMT",
-            "title": "Casanova"
-        }
-    ],
-    "created": 4,
-    "success": true,
-    "total_movies": 2
-    }
+                {    
+            "movies": [
+                {
+                    "id": 1,
+                    "release_date": "Fri, 09 Mar 2001 00:00:00 GMT",
+                    "title": "Thomas NGIJOL"
+                },
+                {
+                    "id": 4,
+                    "release_date": "Wed, 02 Dec 2020 00:00:00 GMT",
+                    "title": "Casanova"
+                }
+            ],
+            "created": 4,
+            "success": true,
+            "total_movies": 2
+            }
 
 
 
@@ -224,80 +224,81 @@ The API will return four error types when requests fail:
     GENERAL: This endpoint is used to create a new actor. We return the ID of the new actor 
     created, the movie that was created, the list of actors and the number of actors.
 
-    Sample: curl -X POST https://capstoneapi.herokuapp.com/actors 
-    -H "Content-Type:application/json" -d "{"name":"Jamel Debouzze","age":45,"gender":"M"}"
+            Sample: curl -X POST https://capstoneapi.herokuapp.com/actors 
+            -H "Content-Type:application/json" -d "{"name":"Jamel Debouzze","age":45,"gender":"M"}"
 
-   {
-    "actors": [
-        {
-            "age": 32,
-            "gender": "M",
-            "id": 1,
-            "name": "Badiou OURO"
-        },
-        {
-            "age": 45,
-            "gender": "M",
-            "id": 6,
-            "name": "Jamel Debouzze"
-        },
-        {
-            "age": 45,
-            "gender": "M",
-            "id": 7,
-            "name": "Jamel Debouzze"
-        },
-        {
-            "age": 45,
-            "gender": "M",
-            "id": 8,
-            "name": "Jamel Debouzze"
-        }
-    ],
-    "created": 8,
-    "success": true,
-    "total_actors": 4
-}
+                {
+                    "actors": [
+                        {
+                            "age": 32,
+                            "gender": "M",
+                            "id": 1,
+                            "name": "Badiou OURO"
+                        },
+                        {
+                            "age": 45,
+                            "gender": "M",
+                            "id": 6,
+                            "name": "Jamel Debouzze"
+                        },
+                        {
+                            "age": 45,
+                            "gender": "M",
+                            "id": 7,
+                            "name": "Jamel Debouzze"
+                        },
+                        {
+                            "age": 45,
+                            "gender": "M",
+                            "id": 8,
+                            "name": "Jamel Debouzze"
+                        }
+                    ],
+                    "created": 8,
+                    "success": true,
+                    "total_actors": 4
+                }
 
 
 ###  PATCH/actors(actor_id)
-    GENERAL: This endpoint allows you to modify an actor. It returns the modified actor, the actor ID that was modified and status_code
+    GENERAL: This endpoint allows you to modify an actor. It returns the modified actor,
+     the actor ID that was modified and status_code
 
-    Sample: curl -X PATCH https://capstoneapi.herokuapp.com/actors/1 
-    -H "Content-Type:application/json" -d "{"name":"Badiou OURO","gender":"M","age":32}"
+            Sample: curl -X PATCH https://capstoneapi.herokuapp.com/actors/1 
+            -H "Content-Type:application/json" -d "{"name":"Badiou OURO","gender":"M","age":32}"
 
-   {
-    "actor": [
-        {
-            "age": 32,
-            "gender": "M",
-            "id": 1,
-            "name": "Badiou OURO"
-        }
-    ],
-    "id": 1,
-    "success": true
-    }
+                {
+                    "actor": [
+                        {
+                            "age": 32,
+                            "gender": "M",
+                            "id": 1,
+                            "name": "Badiou OURO"
+                        }
+                    ],
+                    "id": 1,
+                    "success": true
+                    }
 
 
 ###  PATCH/movie(movie_id)
     GENERAL: This endpoint allows you to modify an movie. It returns the modified movie, 
     the movie ID that was modified and status_code
 
-    Sample: curl -X PATCH https://capstoneapi.herokuapp.com/movie/1 
-    -H "Content-Type:application/json" -d "{"title":"Thomas NGIJOL","release_date":"2001-03-09"}"
+            Sample: curl -X PATCH https://capstoneapi.herokuapp.com/movie/1 
+            -H "Content-Type:application/json" -d "{"title":"Thomas NGIJOL","release_date":"2001-03-09"}"
 
-   {
-    "id": 1,
-    "movie": [
-        {
-            "id": 1,
-            "release_date": "Fri, 09 Mar 2001 00:00:00 GMT",
-            "title": "Thomas NGIJOL"
-        }
-    ],
-    "success": true
-    }
+                {
+                    "id": 1,
+                    "movie": [
+                        {
+                            "id": 1,
+                            "release_date": "Fri, 09 Mar 2001 00:00:00 GMT",
+                            "title": "Thomas NGIJOL"
+                        }
+                    ],
+                    "success": true
+                    }
 
 ## Authentification
 

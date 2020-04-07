@@ -1,12 +1,21 @@
 # Full Stack Capstone Casting API
+## Content
+1. Motivation
+2. API Documentation
+3. Authentification
+4. Existing roles
 
-## Getting Started
-
-### Installing Dependencies
-
-#### Python 3.7
+## Motivation
+The CAPSTONE CASTING API project is the latest Full stack developer course project on the www.udacity.com.
+This project aims to revisit all the concepts seen in this training. It is :
+- Modeling of the database for a web application using the SQLAlchemy ORM (in the files models.py)
+- CRUDs to interact with the database: (app.py)
+- Automated unit tests (in the file test_app.py)
+- Authentication and authorization using Auth0 (auth.py)
+- Deployment on heroku (Procfile, setup.sh)
 
 Follow instructions to install the latest version of python for your platform in the [python docs](https://docs.python.org/3/using/unix.html#getting-and-installing-the-latest-version-of-python)
+
 
 #### Virtual Enviornment
 
@@ -19,22 +28,18 @@ Once you have your virtual environment setup and running, install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
+Heroku looks for a requirements.txt file that needs to include all of your dependencies.
 
 This will install all of the required packages we selected within the `requirements.txt` file.
 
-##### Key Dependencies
+## Running the server locally
+To execute your API locally, you need to modify in the models.py file, the value ENV = 'prod' to ENV = 'dev'.
+You must then launch the migrations to create your database. These migrations are managed using the following commands:
+- python manage.py db init
+- python manage.py db migrate
+- python manage.py db upgrade.
 
-- [Flask](http://flask.pocoo.org/)  is a lightweight backend microservices framework. Flask is required to handle requests and responses.
-
-- [SQLAlchemy](https://www.sqlalchemy.org/) is the Python SQL toolkit and ORM we'll use handle the lightweight sqlite database. You'll primarily work in app.py and can reference models.py. 
-
-- [Flask-CORS](https://flask-cors.readthedocs.io/en/latest/#) is the extension we'll use to handle cross origin requests from our frontend server. 
-
-
-## Running the server
-
-Within directory first ensure you are working using your created virtual environment.
-
+After performing these migrations, you will then execute the commands to launch your API. To test all endpoints of your API, please use the `CapstoneAPI_localhost.postman_collection.json` file by importing it from Postman. If you don't have postman, you can download it from https://www.postman.com.
 To run the server, execute:
 
 ```bash
@@ -43,16 +48,11 @@ export FLASK_ENV=development
 flask run
 ```
 
-Setting the `FLASK_ENV` variable to `development` will detect file changes and restart the server automatically.
-
-Setting the `FLASK_APP` variable to `app.py` directs flask to use the `app.py` to find the application. 
-
-## API REFERENCE
+## API DOCUMENTATION
 
 Getting starter
 ## API REFERENCE 
-Currently, this app can be run locally is also deployed online on the heroku cloud platform. You can run 
-the application online using the link https://capstoneapi.herokuapp.com
+This API has been deployed on heroku and is available from the link https://capstoneapi.herokuapp.com
 
 ## Error Handling
 Errors are retourned as JSON objects in the following format:
@@ -348,13 +348,12 @@ To test the API endpoints, you need to pass a bearer token authorization paramet
 4. The `capstoneAPI_online.postman_collection.json` file can be used to test the API. If you have a 401 error, 
 you need to get another token from your Auth0 domain to test the endpoints.
 
-To show the example of bearer token you can show it in your `config.py file`
+To show the example of bearer token you can show it in your `config.py` file
 
-##  Testing
+##  Testing using capstonedb_test
 To run the tests, run
 ```
 dropdb capstonedb_test
 createdb capstonedb_test
-psql capstonedb_test < capstonedb.sql
 python test_app.py
 ```

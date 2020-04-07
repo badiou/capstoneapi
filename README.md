@@ -7,7 +7,7 @@
 
 ## Motivation
 The CAPSTONE CASTING API project is the latest Full stack developer course project on the www.udacity.com.
-This project aims to revisit all the concepts seen in this training. It is :
+This project aims to revisit all the concepts seen in this course. It is :
 - Modeling of the database for a web application using the SQLAlchemy ORM (in the files models.py)
 - CRUDs to interact with the database: (app.py)
 - Automated unit tests (in the file test_app.py)

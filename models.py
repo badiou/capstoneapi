@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 import os
 from sqlalchemy import Column, String, Integer, create_engine, Date
 from flask_sqlalchemy import SQLAlchemy
@@ -5,30 +8,28 @@ import json
 from datetime import date
 
 database_name = 'capstonedb'
-database_path = 'postgresql://{}:{}@{}/{}'.format('postgres', 'badiou','localhost:5432', database_name)
+database_path = 'postgresql://{}:{}@{}/{}'.format('postgres', 'badiou',
+        'localhost:5432', database_name)
 
 db = SQLAlchemy()
 
-ENV='prod'
+ENV = 'prod'
+
 
 def setup_db(app, database_path=database_path):
-    if ENV=='dev':
-        app.debug=True
+    if ENV == 'dev':
+        app.debug = True
         app.config['SQLALCHEMY_DATABASE_URI'] = database_path
-        app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
-        
+        app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     else:
-        app.debug=False
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'postgres://urbivbabugqsxp:b0f0d0a89407c9887c2b1b58cc9cb7b68a15f81546aee13f68ce4539a88f7548@ec2-3-229-210-93.compute-1.amazonaws.com:5432/df2g9tkipvj2t1'
-        app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False 
+
+        app.debug = False
+        app.config['SQLALCHEMY_DATABASE_URI'] = \
+            'postgres://urbivbabugqsxp:b0f0d0a89407c9887c2b1b58cc9cb7b68a15f81546aee13f68ce4539a88f7548@ec2-3-229-210-93.compute-1.amazonaws.com:5432/df2g9tkipvj2t1'
+        app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     db.app = app
     db.init_app(app)
     db.create_all()
-    
-    
-   
-
-    
 
 
 #################################################################################################################################################
@@ -45,9 +46,16 @@ class Actor(db.Model):
     name = Column(String)
     age = Column(Integer)
     gender = Column(String)
-    performs = db.relationship('Perform', backref=db.backref('actors',lazy=True))
+    performs = db.relationship('Perform', backref=db.backref('actors',
+                               lazy=True))
 
-    def __init__(self,name,age,gender):
+    def __init__(
+        self,
+        name,
+        age,
+        gender,
+        ):
+
         self.name = name
         self.age = age
         self.gender = gender
@@ -68,7 +76,7 @@ class Actor(db.Model):
             'id': self.id,
             'name': self.name,
             'age': self.age,
-            'gender': self.gender
+            'gender': self.gender,
             }
 
 
@@ -85,7 +93,8 @@ class Movie(db.Model):
     id = Column(Integer, primary_key=True)
     title = Column(String)
     release_date = Column(Date)
-    performs = db.relationship('Perform', backref=db.backref('movies',lazy=True))
+    performs = db.relationship('Perform', backref=db.backref('movies',
+                               lazy=True))
 
     def __init__(self, title, release_date):
         self.title = title
@@ -123,7 +132,13 @@ class Perform(db.Model):
                           nullable=False)
     role = db.Column(String)
 
-    def __init__(self,actors_id,movies_id,role):
+    def __init__(
+        self,
+        actors_id,
+        movies_id,
+        role,
+        ):
+
         self.actors_id = actors_id
         self.movies_id = movies_id
         self.role = role
@@ -144,7 +159,7 @@ class Perform(db.Model):
             'id': self.id,
             'actors_id': self.actors_id,
             'movies_id': self.movies_id,
-            'role': self.role
+            'role': self.role,
             }
 
 
